@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Collections;
 
 namespace lab3
 {
-    class Student
+    public class Student
     {
         private readonly string _name;
         private readonly DateTime _dateOfBirth;
@@ -36,8 +35,8 @@ namespace lab3
             private set { 
                 if (value.Length <= 2 && value.Length != 0) {
                     _groupIndex = value;
-                } 
-            } 
+                }
+            }
         }
         public int GroupNum{get { return _groupNum; } private set{ _groupNum = value; }}
         public string Faculty
@@ -61,18 +60,18 @@ namespace lab3
                 }
             } 
         }
-        public string toString()
+        public override string ToString()
         {
             string output =_name + ";" + _dateOfBirth.ToString() + ";" + _dateOfAdmission + ";" + _faculty + ";" + _groupNum + ";" + _groupIndex + ";" + _specialty + ";" + _performance;
             return output;
         }
-         public static Student parseString(string line)
+         public static Student ParseString(string line)
         {
             string[] arr = line.Split(";");
             Student stud = new Student(arr[0], DateTime.Parse(arr[1]), DateTime.Parse(arr[2]), arr[5], Int32.Parse(arr[4]), arr[3], arr[6], Int32.Parse(arr[7]));
             return stud;
         }
-        public string toText()
+        public string ToText()
         {
             string output = "Ф.И.О.: " + _name + "\nДата рождения: " + _dateOfBirth.ToString() + "\nДата поступления: " + _dateOfAdmission + "\nГруппа: " + _faculty + "-" + _groupNum + _groupIndex + "\nСпециальность: " + _specialty + "\nУспеваемость:" + _performance + "%";
             return output;

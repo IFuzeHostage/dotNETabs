@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections;
 
 namespace lab3
 {
-    class StudCont : IEnumerator, IEnumerable
-    {   
+    public class StudCont : IEnumerator, IEnumerable
+    {
         private List<Student> list;
         private int position = -1;
         public StudCont()
@@ -28,19 +26,22 @@ namespace lab3
             }
             return false;
         }
-        public void PrintAll(bool brief=true)
+        public void PrintAll(bool brief = true)
         {
             int i = 1;
-            foreach(Student stud in list)
+            foreach (Student stud in list)
             {
-                if (!brief) Console.WriteLine(i + "." + stud.toText() + "\n");
+                if (!brief)
+                {
+                    Console.WriteLine(i + "." + stud.ToText() + "\n");
+                }
                 else Console.WriteLine(i + "." + stud.Name + "\n");
                 i++;
             }
         }
         public Student GetStudent(int index)
         {
-            if(index<list.Count && index >= 0)
+            if (index < list.Count && index >= 0)
             {
                 return list.ElementAt<Student>(index);
             }
@@ -60,7 +61,7 @@ namespace lab3
         public bool ChangeStudent(string name, Student stud)
         {
             int i = 0;
-            foreach(Student stu in list)
+            foreach (Student stu in list)
             {
                 if (stu.Name == name)
                 {
@@ -74,9 +75,9 @@ namespace lab3
 
         public Student GetStudent(string name)
         {
-            foreach(Student stud in list)
+            foreach (Student stud in list)
             {
-                if(stud.Name == name)
+                if (stud.Name == name)
                 {
                     return stud;
                 }
@@ -107,13 +108,13 @@ namespace lab3
         {
             get { return list.ElementAt<Student>(position); }
         }
-        public string[] toList()
+        public string[] ToList()
         {
             string[] lines = new string[Count()];
             var i = 0;
-            foreach(Student stud in list)
+            foreach (Student stud in list)
             {
-                lines[i] = stud.toString();
+                lines[i] = stud.ToString();
                 i++;
             }
             return lines;
