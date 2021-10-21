@@ -5,7 +5,7 @@ using System.Text;
 
 namespace lab3
 {
-    class Student
+    public class Student
     {
         private readonly string _name;
         private readonly DateTime _dateOfBirth;
@@ -35,7 +35,8 @@ namespace lab3
         public string GroupIndex {
             get { return _groupIndex; }
             private set {
-                if (value.Length <= 2 && value.Length != 0) {
+                if (value.Length <= 2 && value.Length != 0) 
+                {
                     _groupIndex = value;
                 }
             }
@@ -43,9 +44,7 @@ namespace lab3
         public string Group
         {
             get {
-                StringBuilder line = new StringBuilder();
-                line.Append(_faculty + "-" + _groupNum + _groupIndex);
-                return line.ToString();
+                return $"{_faculty}-{_groupNum}{GroupIndex}";
             }       
         }
 
@@ -55,7 +54,10 @@ namespace lab3
             {
                 int year = (int)((DateTime.Now - _dateOfAdmission).TotalDays/365.2425) + 1;
                 if (year > 6) year = 6;
-                else if (year < 0) year = 0;
+                else if (year < 0)
+                {
+                    year = 0;
+                }
                 return year;
             }
         }
@@ -65,7 +67,10 @@ namespace lab3
             get
             {
                 int day = (int)((DateTime.Now - _dateOfAdmission).TotalDays % 365.2425);
-                if (day < 150) return 1;
+                if (day < 150)
+                {
+                    return 1;
+                }
                 else return 2;
             }
         }
@@ -100,20 +105,20 @@ namespace lab3
                 }
             } 
         }
-        public string toString()
+        public override string ToString()
         {
-            string output =_name + ";" + _dateOfBirth.ToString() + ";" + _dateOfAdmission + ";" + _faculty + ";" + _groupNum + ";" + _groupIndex + ";" + _specialty + ";" + _performance;
+            string output = $"{_name};{_dateOfBirth.ToString()};{_dateOfAdmission};{_faculty};{_groupNum};{_groupIndex};{_specialty};{_performance}";
             return output;
         }
-         public static Student parseString(string line)
+         public static Student ParseString(string line)
         {
             string[] arr = line.Split(";");
             Student stud = new Student(arr[0], DateTime.Parse(arr[1]), DateTime.Parse(arr[2]), arr[5], Int32.Parse(arr[4]), arr[3], arr[6], Int32.Parse(arr[7]));
             return stud;
         }
-        public string toText()
+        public string ToText()
         {
-            string output = "Ф.И.О.: " + _name + "\nДата рождения: " + _dateOfBirth.ToString() + "\nДата поступления: " + _dateOfAdmission + "\nГруппа: " + _faculty + "-" + _groupNum + _groupIndex + "\nСпециальность: " + _specialty + "\nУспеваемость:" + _performance + "%";
+            string output = $"Ф.И.О.: {_name}\nДата рождения: {_dateOfBirth.ToString()}\nДата поступления: {_dateOfAdmission}\nГруппа: {_faculty}-{_groupNum}{_groupIndex}\nСпециальность: {_specialty}\nУспеваемость: {_performance}%";
             return output;
         }
     }

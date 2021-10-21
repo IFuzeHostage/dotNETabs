@@ -7,7 +7,7 @@ using System.Collections;
 
 namespace lab3
 {
-    class StudCont : IEnumerator, IEnumerable
+    public class StudCont : IEnumerator, IEnumerable
     {   
         private List<Student> list;
         private int position = -1;
@@ -33,7 +33,7 @@ namespace lab3
             int i = 1;
             foreach(Student stud in list)
             {
-                if (!brief) Console.WriteLine(i + "." + stud.toText() + "\n");
+                if (!brief) Console.WriteLine(i + "." + stud.ToText() + "\n");
                 else Console.WriteLine(i + "." + stud.Name + "\n");
                 i++;
             }
@@ -107,13 +107,13 @@ namespace lab3
         {
             get { return list.ElementAt<Student>(position); }
         }
-        public string[] toList()
+        public string[] ToList()
         {
             string[] lines = new string[Count()];
             var i = 0;
             foreach(Student stud in list)
             {
-                lines[i] = stud.toString();
+                lines[i] = stud.ToString();
                 i++;
             }
             return lines;
