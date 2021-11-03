@@ -7,9 +7,9 @@ namespace Lab5
 {
     public class Student
     {
-        private readonly string _name;
-        private readonly DateTime _dateOfBirth;
-        private readonly DateTime _dateOfAdmission;
+        private string _name;
+        private DateTime _dateOfBirth;
+        private DateTime _dateOfAdmission;
         private string _groupIndex;
         private int _groupNum;
         private string _faculty;
