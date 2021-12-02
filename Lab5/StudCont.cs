@@ -15,10 +15,17 @@ namespace Lab5
         {
             list = new List<Student>();
         }
+
+        public StudCont(List<Student> studList)
+        {
+            list = studList;
+        }
+
         public void Add(Student stud)
         {
             list.Add(stud);
         }
+
         public bool Delete(int index)
         {
             if (index < list.Count && index >= 0)
@@ -28,6 +35,7 @@ namespace Lab5
             }
             return false;
         }
+
         public void PrintAll(bool brief=true)
         {
             int i = 1;
@@ -38,6 +46,7 @@ namespace Lab5
                 i++;
             }
         }
+
         public Student GetStudent(int index)
         {
             if(index<list.Count && index >= 0)
