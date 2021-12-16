@@ -13,7 +13,7 @@ namespace lab8
         public readonly string _groupIndex;
 
 
-        public readonly string[] faculties = { "Э", "МИТ", "И", "ХТ", "БЭМ", "МО", "СГТ", "КН", "КИТ" };
+        public readonly string[] faculties = { "Э", "МИТ", "И", "ХТ", "БЭМ", "МО", "СГТ", "КН", "КИТ" , "CIT"};
 
         public string FullName
         {

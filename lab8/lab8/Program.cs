@@ -18,6 +18,8 @@ namespace lab8
             studList.Reset();
             studList.Sort(StudCont.SortType.Performance);
 
+            Console.WriteLine("Сортировка по успеваемости.\n");
+
             studList.Reset();
             Console.WriteLine(StudContHelper.ToTable(studList));
         }
